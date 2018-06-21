@@ -9,14 +9,31 @@ import { map } from 'rxjs/operators';
 export class ChatService {
 
   messages: Subject<any>;
+  handler: any;
+  serverConnected: boolean;
 
   constructor(private wsService: WebsocketService) {
-    this.messages = <Subject<any>>wsService
+    this.connectToServer();
+   }
+
+   connectToServer() {
+    this.messages = <Subject<any>>this.wsService
     .connect()
-    .pipe(map((response: any) => response))
+    .pipe(map((response: any) => response));
+    this.handler = this.messages.subscribe();
+    this.serverConnected = true;
+   }
+
+   disconnectFromServer() {         
+    this.handler.complete();
+    this.serverConnected = false;
    }
 
    sendMsg(msg: any ): void {
      this.messages.next(msg);
+   }
+
+   isConnected() {
+     return this.serverConnected;
    }
 }

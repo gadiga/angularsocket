@@ -39,6 +39,8 @@ export class WebsocketService {
       }
     };
 
+    console.log(Observable.constructor);
+
     return Rx.Subject.create(observer, observable);
 
   }

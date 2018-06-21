@@ -1,3 +1,5 @@
 <h1>Socket.io App</h1>
 
-<button (click)="sendMessage()">Send Message</button>
+<button (click)="sendMessage()" *ngIf="serverConnected">Send Message</button>
+<button (click)="disconnectFromServer()" *ngIf="serverConnected">Disconnect From Socket</button>
+<button (click)="connectToServer()" *ngIf="!serverConnected">Connect to Socket</button>
