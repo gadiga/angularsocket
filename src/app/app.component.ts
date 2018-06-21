@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ChatService } from './services/chat.service';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'Chat Service with WebSocket';
+
+  constructor(private chat: ChatService) {}
+
+  ngOnInit() {
+    this.chat.messages.subscribe(msg=>console.log('message from server....'+ msg));
+  }
+
+  sendMessage() {
+    this.chat.sendMsg('Hello world');
+  }
 }

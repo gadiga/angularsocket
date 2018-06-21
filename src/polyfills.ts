@@ -78,3 +78,9 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+
+ /*
+  this is temporary to fix for bug in socket.io
+*/
+(window as any).global = window;
