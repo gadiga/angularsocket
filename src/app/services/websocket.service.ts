@@ -24,7 +24,8 @@ export class WebsocketService {
 
     let observable = new Observable(observer => {
       this.socket.on('message', data => {
-        console.log('Message from server...' + data);
+        console.log(data);
+        console.log('Message from server...' + JSON.stringify(data));
         observer.next(data);
       });
 
@@ -38,9 +39,6 @@ export class WebsocketService {
         this.socket.emit('message', JSON.stringify(data));
       }
     };
-
-    console.log(Observable.constructor);
-
     return Rx.Subject.create(observer, observable);
 
   }

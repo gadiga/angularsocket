@@ -1,0 +1,12 @@
+<div class="card-group">
+  <div class="card" *ngFor="let item of subList">
+    <div class="card-body">
+      <i class="card-img-top fas fa-anchor fa-rotate-90"></i>
+      <h5 class="card-title">{{ item.title }}</h5>
+      <p class="card-text">{{ item.description }}</p>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">{{ parent }}</small>
+    </div>
+  </div>
+</div>

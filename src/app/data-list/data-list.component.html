@@ -1,0 +1,22 @@
+<div class="container">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>URL</th>
+          <th>Description</th>
+          <th>SubSites</th>
+      </tr>      
+    </thead>
+    <tbody>
+      <tr *ngFor="let dlist of dataList">
+        <td>{{ dlist.id }}</td>
+        <td>{{ dlist.title }}</td>
+        <td>{{ dlist.url }}</td>
+        <td>{{ dlist.description }}</td>
+        <td><app-sub-list [holder]="dlist.title" [list]="dlist.subSites"></app-sub-list></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

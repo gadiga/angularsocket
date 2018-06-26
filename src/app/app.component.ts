@@ -10,15 +10,20 @@ import { ChatService } from './services/chat.service';
 export class AppComponent {
   title = 'Chat Service with WebSocket';
   serverConnected: boolean;
+  dataList = [];
 
   constructor(private chat: ChatService) {}
 
   ngOnInit() {
     this.subscribeForMessages();
+    this.chat.sendMsg('Hello world');
   }
 
   subscribeForMessages() {
-    this.chat.messages.subscribe(msg=>console.log('message from server....'+ msg));
+    this.chat.messages.subscribe(msg=>{
+      console.log('message from server....')
+      this.dataList = this.dataList.concat(...msg.text);
+    });
     this.serverConnected = this.chat.isConnected();
   }
 
@@ -34,5 +39,6 @@ export class AppComponent {
   disconnectFromServer() {
     this.chat.disconnectFromServer();
     this.serverConnected = this.chat.isConnected();
+    this.dataList = [];
   }
 }

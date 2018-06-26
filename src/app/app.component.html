@@ -3,3 +3,7 @@
 <button (click)="sendMessage()" *ngIf="serverConnected">Send Message</button>
 <button (click)="disconnectFromServer()" *ngIf="serverConnected">Disconnect From Socket</button>
 <button (click)="connectToServer()" *ngIf="!serverConnected">Connect to Socket</button>
+
+<br>
+
+<app-data-list [dataList]="dataList"></app-data-list>
